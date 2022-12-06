@@ -26,6 +26,9 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    # jobs run in parallel by default, add 'needs' keywords to make this job sequential (-> depending on another)
+    # this job waits until 'test' job is successfully finished
+    needs: test # multiple jobs: [test, job2]
     # every job gets its own runner - its own virtual machine that's totally isolated from other machines and jobs
     runs-on: ubuntu-latest
     steps:
