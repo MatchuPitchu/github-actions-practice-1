@@ -8,4 +8,4 @@ jobs:
         # output inserted values of a context: here github key (-> stands for the context object)
         # Docu of available contexts: https://docs.github.com/en/actions/learn-github-actions/contexts
         # Docu of available expressions (e.g. ${{ toJSON(github) }}): https://docs.github.com/en/actions/learn-github-actions/expressions
-        run: echo "${{ toJSON(github) }}"
+        run: echo "${{ toJSON(github) }}" # outputs github context
