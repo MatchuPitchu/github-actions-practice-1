@@ -1,0 +1,27 @@
+name: Test Project
+on: push
+jobs:
+  test:
+    # list of preinstalled software of specific runner: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
+    # Node is already installed
+    runs-on: ubuntu-latest
+    steps:
+      # steps run on machines/servers in a specific environment, NOT inside the repo
+      # so you need to make code available for server
+      - name: Get code
+        # Action to checkout the repo: https://github.com/actions/checkout
+        # use 'uses' keyword for an action, 'run' for a command
+        uses: actions/checkout@v3
+        # configure action with 'with' keyword
+        # with: -> here not needed since default config is fine
+      # install Node NOT needed here, but to show like it would be installed on server
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        # 'npm ci' install all dependencies locked into package-lock.json
+        # 'npm i' install all dependencies in package.json
+        run: npm ci
+      - name: Run tests
+        run: npm test
