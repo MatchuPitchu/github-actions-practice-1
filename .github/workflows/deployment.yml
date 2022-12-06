@@ -1,5 +1,5 @@
 name: Deploy Project
-on: push
+on: [push, workflow_dispatch] # add multiple events that trigger workflow
 jobs:
   test:
     # list of preinstalled software of specific runner: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
